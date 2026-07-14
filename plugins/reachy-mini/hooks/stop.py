@@ -23,7 +23,6 @@ DATASET = "pollen-robotics/reachy-mini-emotions-library"
 REQUEST_TIMEOUT = 1.0
 MAX_SEEN_TURNS = 256
 HEAD_MOTION_MODE_ENV = "REACHY_MINI_HEAD_MOTION"
-HEAD_TRACKING_ENV = "REACHY_MINI_HEAD_TRACKING"
 HEAD_MOTION_PID = "head-motion.pid"
 HEAD_MOTION_AMPLITUDE = 0.02
 HEAD_MOTION_FREQUENCY = 0.08
@@ -151,12 +150,6 @@ def state_path() -> Path:
     return Path(os.environ.get("PLUGIN_DATA", os.getenv("TEMP", "/tmp")))
 
 
-def trigger_tracking(enabled: bool) -> bool:
-    action = "enable" if enabled else "disable"
-    url = f"{os.environ.get(DAEMON_ENV, DAEMON_URL).rstrip('/')}/api/media/tracking/{action}"
-    return post_json(url, {"weight": 1.0} if enabled else None)
-
-
 def trigger_head_target(yaw: float) -> bool:
     url = f"{os.environ.get(DAEMON_ENV, DAEMON_URL).rstrip('/')}/api/move/set_target"
     return post_json(
@@ -190,9 +183,6 @@ def stop_head_motion() -> None:
 
 def start_head_motion() -> None:
     stop_head_motion()
-    if os.environ.get(HEAD_TRACKING_ENV, "").lower() in {"1", "true", "yes"}:
-        trigger_tracking(True)
-        return
     if os.environ.get(HEAD_MOTION_MODE_ENV, "sinusoidal").lower() == "off":
         return
     state_path().mkdir(parents=True, exist_ok=True)
@@ -204,12 +194,6 @@ def start_head_motion() -> None:
         start_new_session=True,
     )
     (state_path() / HEAD_MOTION_PID).write_text(str(process.pid), encoding="ascii")
-
-
-def stop_head_motion_and_tracking() -> None:
-    stop_head_motion()
-    if os.environ.get(HEAD_TRACKING_ENV, "").lower() in {"1", "true", "yes"}:
-        trigger_tracking(False)
 
 
 def mark_turn_seen(turn_id: str | None, event_name: str = "stop") -> bool:
@@ -280,13 +264,13 @@ def main() -> int:
         return head_motion_worker()
     if len(sys.argv) > 1:
         if sys.argv[1] == "session-start":
-            stop_head_motion_and_tracking()
+            stop_head_motion()
         return handle_lifecycle(sys.argv[1])
     try:
         event = json.load(sys.stdin)
     except (json.JSONDecodeError, OSError):
         return 0
-    stop_head_motion_and_tracking()
+    stop_head_motion()
     return handle_event(event)
 
 

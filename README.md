@@ -11,7 +11,6 @@ Automatic Reachy Mini lifecycle movements for natural Codex conversations, with 
 - `UserPromptSubmit` plays a nod (`yes1`) followed by the thinking gesture (`thoughtful1`).
 - `Stop` plays a small celebration (`success1`) when the response finishes.
 - During thinking and response generation, the head makes a subtle sinusoidal yaw movement.
-- Set `REACHY_MINI_HEAD_TRACKING=1` to use Reachy’s built-in visual head tracking instead.
 - `$reachy-mini:reachy-mini-move` and `$reachy-mini:reachy-mini-mood` remain explicit overrides.
 - Robot daemon outages are logged and do not stop Codex.
 
@@ -28,7 +27,6 @@ Override local endpoints when needed:
 
 ```text
 REACHY_MINI_DAEMON_URL=http://robot-host:8000
-REACHY_MINI_HEAD_TRACKING=1
 ```
 
 For a USB Reachy Mini Lite, install the SDK in its virtual environment and start the daemon in a
@@ -120,7 +118,6 @@ Hardware acceptance requires a running daemon and one smoke test for session sta
 completion, and explicit marker overrides.
 
 Head motion uses the daemon’s `/api/move/set_target` endpoint with a gentle 0.02-radian yaw amplitude.
-Built-in tracking uses `/api/media/tracking/enable` and is disabled when the response finishes.
 
 ## Troubleshooting
 

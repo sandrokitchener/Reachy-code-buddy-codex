@@ -70,21 +70,6 @@ class StopHookTests(unittest.TestCase):
         self.assertTrue(urls[2].endswith("/thoughtful1"))
         popen.assert_called_once()
 
-    def test_tracking_mode_uses_daemon_tracking(self):
-        with patch.dict(os.environ, {stop.HEAD_TRACKING_ENV: "1"}), patch(
-            "hooks.stop.post_json", return_value=True
-        ) as post_json, patch("hooks.stop.subprocess.Popen") as popen:
-            stop.handle_lifecycle("prompt-submit")
-            stop.stop_head_motion_and_tracking()
-
-        self.assertTrue(
-            any(url.endswith("/api/media/tracking/enable") for url in [call.args[0] for call in post_json.call_args_list])
-        )
-        popen.assert_not_called()
-        self.assertTrue(
-            any(url.endswith("/api/media/tracking/disable") for url in [call.args[0] for call in post_json.call_args_list])
-        )
-
     def test_head_target_is_small_sinusoidal_yaw(self):
         with patch("hooks.stop.post_json", return_value=True) as post_json:
             stop.trigger_head_target(stop.HEAD_MOTION_AMPLITUDE)
