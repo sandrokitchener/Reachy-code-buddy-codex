@@ -1,0 +1,6 @@
+interface:
+  display_name: "Reachy Mini Move"
+  short_description: "Add an explicit Reachy Mini gesture to a response."
+
+policy:
+  allow_implicit_invocation: false

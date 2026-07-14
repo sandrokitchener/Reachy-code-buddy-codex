@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.DS_Store
+.omx/
+.ruff_cache/
+**/__pycache__/
+AGENTS.md

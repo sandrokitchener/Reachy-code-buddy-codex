@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/stop.py\" session-start",
+            "commandWindows": "python \"$env:PLUGIN_ROOT\\hooks\\stop.py\" session-start",
+            "timeout": 5,
+            "statusMessage": "Waking Reachy Mini"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/stop.py\" prompt-submit",
+            "commandWindows": "python \"$env:PLUGIN_ROOT\\hooks\\stop.py\" prompt-submit",
+            "timeout": 5,
+            "statusMessage": "Reachy Mini is thinking"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/stop.py\"",
+            "commandWindows": "python \"$env:PLUGIN_ROOT\\hooks\\stop.py\"",
+            "timeout": 5,
+            "statusMessage": "Checking Reachy Mini markers"
+          }
+        ]
+      }
+    ]
+  }
+}

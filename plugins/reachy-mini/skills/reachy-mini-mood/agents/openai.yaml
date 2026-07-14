@@ -1,0 +1,6 @@
+interface:
+  display_name: "Reachy Mini Mood"
+  short_description: "Add an explicit Reachy Mini mood trigger to a response."
+
+policy:
+  allow_implicit_invocation: false

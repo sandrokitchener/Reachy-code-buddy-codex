@@ -1,0 +1,32 @@
+{
+  "name": "reachy-mini",
+  "version": "1.0.0+codex.20260714132742",
+  "description": "Automatic Reachy Mini lifecycle movements for Codex conversations",
+  "author": {
+    "name": "sandrokitchener",
+    "url": "https://github.com/sandrokitchener"
+  },
+  "repository": "https://github.com/sandrokitchener/Reachy-code-buddy-codex",
+  "license": "MIT",
+  "keywords": [
+    "Reachy Mini",
+    "robotics",
+    "movement"
+  ],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json",
+  "interface": {
+    "displayName": "Reachy Mini",
+    "shortDescription": "Control Reachy Mini movements from Codex",
+    "longDescription": "Wake, nod, think, and celebrate with Reachy Mini during Codex conversations; explicit marker skills provide overrides.",
+    "developerName": "sandrokitchener",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/sandrokitchener/Reachy-code-buddy-codex",
+    "defaultPrompt": [
+      "Use automatic Reachy Mini lifecycle movements with explicit marker overrides when needed."
+    ]
+  }
+}
