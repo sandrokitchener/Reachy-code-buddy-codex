@@ -20,8 +20,7 @@ the hooks are reviewed and trusted.
 ## Requirements
 
 - Codex with plugin support
-- Python 3.11+ (3.12 recommended by the Reachy SDK)
-- Reachy Mini Lite daemon at `http://localhost:8000` for moves and moods
+- Reachy Mini Control desktop app running its local daemon at `http://localhost:8000`
 
 Override local endpoints when needed:
 
@@ -29,17 +28,11 @@ Override local endpoints when needed:
 REACHY_MINI_DAEMON_URL=http://robot-host:8000
 ```
 
-For a USB Reachy Mini Lite, install the SDK in its virtual environment and start the daemon in a
-separate terminal:
+Open Reachy Mini Control and leave it running. It starts the local daemon and handles the USB
+connection automatically. Verify `http://localhost:8000/docs` if you want to confirm the daemon is
+available; do not point the plugin at `COM3` directly.
 
-```text
-uv pip install reachy-mini
-reachy-mini-daemon
-```
-
-Keep that terminal open and verify `http://localhost:8000/docs`. The daemon auto-detects the USB
-motor port; do not point the plugin at `COM3` directly. The Reachy Mini Control desktop app can
-start the same daemon for you.
+The standalone SDK daemon is only needed for a manual, non-desktop-app setup.
 
 ## Install from this repository
 
