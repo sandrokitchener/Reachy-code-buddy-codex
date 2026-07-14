@@ -66,13 +66,6 @@ REACHY_MINI_DAEMON_URL=http://robot-host:8000
 
 Default: `http://localhost:8000` (the USB/desktop-app path).
 
-## Development 🛠️
-
-```text
-python -m unittest discover -s tests -v
-python -m compileall plugins/reachy-mini/hooks tests
-```
-
 Head motion uses `/api/move/set_target` with a gentle 0.02-radian yaw amplitude. The worker starts
 on `UserPromptSubmit` and stops on `Stop`; the hook does not promise continuous motion when Codex
 or the daemon is unavailable.
