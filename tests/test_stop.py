@@ -23,6 +23,9 @@ class StopHookTests(unittest.TestCase):
     def test_mood_maps_to_allow_listed_move(self):
         self.assertEqual(stop.extract_mood_marker("<!-- MOOD: thoughtful -->"), "thoughtful")
         self.assertEqual(stop.MOOD_TO_EMOTION["thoughtful"], "thoughtful1")
+        self.assertEqual(stop.MOOD_TO_EMOTION["understanding"], "understanding1")
+        self.assertEqual(stop.MOOD_TO_EMOTION["proud"], "proud1")
+        self.assertEqual(stop.MOOD_TO_EMOTION["attentive"], "attentive1")
 
     def test_endpoint_override_is_plugin_specific(self):
         with patch.dict(os.environ, {stop.DAEMON_ENV: "http://robot-host:8000"}), patch(

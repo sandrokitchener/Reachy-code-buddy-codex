@@ -54,6 +54,9 @@ MOOD_TO_EMOTION = {
     "calm": "calming1",
     "energetic": "enthusiastic1",
     "playful": "cheerful1",
+    "understanding": "understanding1",
+    "proud": "proud1",
+    "attentive": "attentive1",
 }
 MOODS = set(MOOD_TO_EMOTION)
 

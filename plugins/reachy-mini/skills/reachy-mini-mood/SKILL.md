@@ -14,4 +14,4 @@ Add one invisible HTML comment to the response:
 <!-- MOOD: mood_name -->
 ```
 
-Choose one of: `celebratory`, `thoughtful`, `welcoming`, `confused`, `frustrated`, `surprised`, `calm`, `energetic`, or `playful`. Match the mood to the response. Do not add more than one mood marker. The Codex Stop hook maps the mood to one allow-listed recorded emotion and sends it to the Reachy daemon; it does not run a long-lived TTS loop or require the conversation app.
+Choose one of: `celebratory`, `thoughtful`, `welcoming`, `confused`, `frustrated`, `surprised`, `calm`, `energetic`, `playful`, `understanding`, `proud`, or `attentive`. Match the mood to the response. Do not add more than one mood marker. The Codex Stop hook maps the mood to one allow-listed recorded emotion and sends it to the Reachy daemon; it does not run a long-lived TTS loop or require the conversation app.

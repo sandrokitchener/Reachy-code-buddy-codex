@@ -2,13 +2,15 @@
 
 Reachy Mini movements for Codex conversations.
 
-## Features
+> **Safety:** Keep the robot’s movement area clear before enabling hooks. Keep hands, cables,
+> pets, and fragile objects away from Reachy Mini, supervise motion, and disable the plugin if
+> anything behaves unexpectedly.
 
-- Wake on session start.
-- Nod and think on each prompt.
-- Gentle sinusoidal head motion while Codex thinks and responds.
-- Small success movement when the response ends.
-- Explicit `$reachy-mini:reachy-mini-move` and `$reachy-mini:reachy-mini-mood` overrides.
+## What it does
+
+Reachy Mini joins the conversation: wakes when Codex starts, nods when a prompt arrives, gently
+swishes its head while Codex thinks, then celebrates when the answer lands. Need a different vibe?
+Ask for a thoughtful, understanding, proud, or attentive reaction—or any other supported mood.
 
 ## Requirements
 
